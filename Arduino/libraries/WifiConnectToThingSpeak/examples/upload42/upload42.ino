@@ -7,9 +7,9 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
-  String apiKey = "6CWX08BRLJBPW7WE";
-  char* ssid = "Borberg";
-  char* password = "MartineErDigg";
+  String apiKey = "XXXXXXXXXXXXXXXX";
+  char* ssid = "ssid";
+  char* password = "password";
   WifiConnectToThingSpeak wifi;
   wifi.begin(ssid, password, apiKey);
   wifi.UploadDataToThingSpeak(42);
