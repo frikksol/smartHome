@@ -1,12 +1,20 @@
 import QtQuick 2.7
 import QtQuick.Controls 2.0
 import QtQuick.Layouts 1.0
+import QtQuick.Controls.Material 2.1
 
 ApplicationWindow {
     visible: true
-    width: 640
-    height: 480
+    width: 480
+    height: 320
     title: qsTr("Hello World")
+
+    Material.theme: Material.Dark
+    Material.accent: Material.Cyan
+    Material.foreground: Material.Cyan
+    Material.primary: Material.Orange
+
+
 
     SwipeView {
         id: swipeView
@@ -14,6 +22,8 @@ ApplicationWindow {
         currentIndex: tabBar.currentIndex
 
         Page1 {
+        }
+        Bonsai{
         }
 
         Page {
@@ -27,11 +37,15 @@ ApplicationWindow {
     footer: TabBar {
         id: tabBar
         currentIndex: swipeView.currentIndex
+
         TabButton {
             text: qsTr("First")
         }
         TabButton {
-            text: qsTr("Second")
+            text: qsTr("Bonsai")
+        }
+        TabButton {
+            text: qsTr("Last")
         }
     }
 }

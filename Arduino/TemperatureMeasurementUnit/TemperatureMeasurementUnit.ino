@@ -4,7 +4,7 @@
 WifiConnectToThingSpeak wifi;
 ReadTemperatureData temperatureData;
 
-const int oneMinute = 60000;
+const int oneMinute = 60 * 1000;
 const int powerPin = 12;
 const int dataPin = 13;
 
@@ -41,5 +41,6 @@ void loop() {
   {
     Serial.println("ERROR while uploding values to ThingSpeak!");
   }
-  delay(oneMinute);
+
+  delay(60 * oneMinute);
 }

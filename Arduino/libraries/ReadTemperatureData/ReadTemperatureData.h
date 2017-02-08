@@ -1,4 +1,5 @@
-#include <DHT.h>
+#include <Wire.h>
+#include <Adafruit_BMP085.h>
 
 class ReadTemperatureData
 {
@@ -13,5 +14,5 @@ private:
     int GetNewMeasurement();
     int powerPin{ 0 };
     int dataPin{ 0 };
-    const int dhtType{DHT11};
+    Adafruit_BMP085 bmp;
 };

@@ -5,30 +5,28 @@ ReadTemperatureData::ReadTemperatureData(){}
 void ReadTemperatureData::begin(int inputPowerPin, int inputAnalogDataPin)
 {
     powerPin = inputPowerPin;
-    dataPin = inputAnalogDataPin;
-
     pinMode(powerPin, OUTPUT);
-    pinMode(dataPin, INPUT);
-
 }
 
 void ReadTemperatureData::UpdateReadings()
 {
     //Turn on moisture measurement unit
     digitalWrite(powerPin, HIGH);
-    DHT dht(dataPin, dhtType);
-    dht.begin();
+    if (!bmp.begin())
+    {
+        Serial.println("Could not find a valid BMP085 sensor, check wiring!");
+    }
     delay(1000);
 
     //Measure data
-    int humidity = dht.readHumidity(); //GetNewHumidityMeasurement();
-    int temperature = dht.readTemperature(); //GetNewHumidityMeasurement();
+    int humidity = bmp.readPressure(); //GetNewHumidityMeasurement();
+    int temperature = bmp.readTemperature(); //GetNewHumidityMeasurement();
 
     for (int measurements = 0; measurements < 10; measurements++)
     {
         delay(300);
-        humidity = .5 * (humidity + dht.readHumidity());
-        temperature = .5 * (temperature + dht.readTemperature());
+        humidity = .5 * (humidity + bmp.readPressure());
+        temperature = .5 * (temperature + bmp.readTemperature());
     }
 
     Humidity = humidity;

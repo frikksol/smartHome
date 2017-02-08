@@ -200,6 +200,7 @@ DIST          = ../../../Qt/5.8/clang_64/mkspecs/features/spec_pre.prf \
 		../../../Qt/5.8/clang_64/mkspecs/features/qt_config.prf \
 		../../../Qt/5.8/clang_64/mkspecs/macx-clang/qmake.conf \
 		../../../Qt/5.8/clang_64/mkspecs/features/spec_post.prf \
+		../qtTestProject/.qmake.stash \
 		../../../Qt/5.8/clang_64/mkspecs/features/exclusive_builds.prf \
 		../../../Qt/5.8/clang_64/mkspecs/features/mac/sdk.prf \
 		../../../Qt/5.8/clang_64/mkspecs/features/toolchain.prf \
@@ -387,6 +388,7 @@ Makefile: ../qtTestProject/qtTestProject.pro ../../../Qt/5.8/clang_64/mkspecs/ma
 		../../../Qt/5.8/clang_64/mkspecs/features/qt_config.prf \
 		../../../Qt/5.8/clang_64/mkspecs/macx-clang/qmake.conf \
 		../../../Qt/5.8/clang_64/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		../../../Qt/5.8/clang_64/mkspecs/features/exclusive_builds.prf \
 		../../../Qt/5.8/clang_64/mkspecs/features/mac/sdk.prf \
 		../../../Qt/5.8/clang_64/mkspecs/features/toolchain.prf \
@@ -569,6 +571,7 @@ Makefile: ../qtTestProject/qtTestProject.pro ../../../Qt/5.8/clang_64/mkspecs/ma
 ../../../Qt/5.8/clang_64/mkspecs/features/qt_config.prf:
 ../../../Qt/5.8/clang_64/mkspecs/macx-clang/qmake.conf:
 ../../../Qt/5.8/clang_64/mkspecs/features/spec_post.prf:
+.qmake.stash:
 ../../../Qt/5.8/clang_64/mkspecs/features/exclusive_builds.prf:
 ../../../Qt/5.8/clang_64/mkspecs/features/mac/sdk.prf:
 ../../../Qt/5.8/clang_64/mkspecs/features/toolchain.prf:
@@ -642,6 +645,7 @@ clean: compiler_clean
 
 distclean: clean 
 	-$(DEL_FILE) -r qtTestProject.app
+	-$(DEL_FILE) .qmake.stash
 	-$(DEL_FILE) Makefile
 
 
@@ -660,7 +664,12 @@ compiler_rcc_clean:
 	-$(DEL_FILE) qrc_qml.cpp
 qrc_qml.cpp: ../qtTestProject/qml.qrc \
 		../../../Qt/5.8/clang_64/bin/rcc \
+		../qtTestProject/Bonsai.qml \
+		../qtTestProject/MainGui.qml \
+		../qtTestProject/MainGuiForm.ui.qml \
 		../qtTestProject/Page1Form.ui.qml \
+		../qtTestProject/GeneralApplicationSettings.qml \
+		../qtTestProject/BonsaiForm.ui.qml \
 		../qtTestProject/Page1.qml \
 		../qtTestProject/qtquickcontrols2.conf \
 		../qtTestProject/main.qml

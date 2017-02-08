@@ -4,7 +4,7 @@
 WifiConnectToThingSpeak wifi;
 ReadMoistureData moistureData;
 
-const int oneMinute = 60000;
+const int oneMinute = 60 * 1000000;
 const int powerPin = 12;
 const int dataPin = A0;
 
@@ -37,5 +37,6 @@ void loop() {
   {
     Serial.println("ERROR while uploding value to ThingSpeak!");
   }
-  delay(oneMinute);
+  
+  ESP.deepSleep(60 * oneMinute);
 }
