@@ -23,7 +23,7 @@ ApplicationWindow {
 
         Page1 {
         }
-        Bonsai{
+        Page{
         }
 
         Page {

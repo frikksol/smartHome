@@ -4,10 +4,5 @@
         <file>Page1.qml</file>
         <file>Page1Form.ui.qml</file>
         <file>qtquickcontrols2.conf</file>
-        <file>GeneralApplicationSettings.qml</file>
-        <file>Bonsai.qml</file>
-        <file>BonsaiForm.ui.qml</file>
-        <file>MainGui.qml</file>
-        <file>MainGuiForm.ui.qml</file>
     </qresource>
 </RCC>
