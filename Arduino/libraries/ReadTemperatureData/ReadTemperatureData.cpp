@@ -12,9 +12,10 @@ void ReadTemperatureData::UpdateReadings()
 {
     //Turn on moisture measurement unit
     digitalWrite(powerPin, HIGH);
+    delay(2000);
     if (!bmp.begin())
     {
-        Serial.println("Could not find a valid BMP085 sensor, check wiring!");
+        Serial.println("Could not find a valid BMP280 sensor, check wiring!");
     }
     delay(1000);
 

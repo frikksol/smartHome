@@ -1,5 +1,5 @@
 #include <Wire.h>
-#include <Adafruit_BMP085.h>
+#include <Adafruit_BMP280.h>
 
 class ReadTemperatureData
 {
@@ -14,5 +14,5 @@ private:
     int GetNewMeasurement();
     int powerPin{ 0 };
     int dataPin{ 0 };
-    Adafruit_BMP085 bmp;
+    Adafruit_BMP280 bmp;
 };

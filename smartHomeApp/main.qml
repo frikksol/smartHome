@@ -7,21 +7,19 @@ ApplicationWindow {
     visible: true
     width: 480
     height: 320
-    title: qsTr("Hello World")
+    title: qsTr("smartHomeApp")
 
     Material.theme: Material.Dark
     Material.accent: Material.Cyan
     Material.foreground: Material.Cyan
     Material.primary: Material.Orange
 
-
-
     SwipeView {
         id: swipeView
         anchors.fill: parent
         currentIndex: tabBar.currentIndex
 
-        Page1 {
+        WeatherData {
         }
         Page{
         }
