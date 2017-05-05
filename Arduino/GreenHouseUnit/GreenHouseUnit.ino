@@ -26,7 +26,7 @@ void setup() {
   String apiKey = "XXXXXXXXXXXXXXXX";
   char* ssid = "ssid";
   char* password = "password";
-
+  
   //Running begin functions. Arduino likes to do it this way...
   //TODO: No check if any of these fail
   wifi.begin(ssid, password, apiKey);
@@ -54,10 +54,25 @@ void loop() {
   Serial.println(moistureReading);
 
   //Water Pump
+  int numberOfMillisSpentWatering = 0;
+  const int maxNumberOfMillisToSpendWatering = 1000;
   if (moistureReading < limitForPlantDryness)
   {
     Serial.println("Plant is dry. Watering now");
-    waterPump.TurnMotorOnForTimePeriod(1);
+    waterPump.ToggleWaterPumpStatus();
+    while(moistureReading < limitForPlantDryness)
+    {
+      delay(100);
+      moistureReading = moistureData.GetMoistureReading();
+      numberOfMillisSpentWatering += 100;
+      if (numberOfMillisSpentWatering > maxNumberOfMillisToSpendWatering)
+      {
+        moistureReading = limitForPlantDryness + 1;
+        numberOfMillisSpentWatering = 0;
+      }
+      Serial.println(numberOfMillisSpentWatering);
+    }
+    waterPump.ToggleWaterPumpStatus();
   }
 
   //Upload data

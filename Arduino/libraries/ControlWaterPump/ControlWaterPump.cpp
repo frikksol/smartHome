@@ -23,3 +23,17 @@ void ControlWaterPump::TurnMotorOnForAmountOfWater(int desiliters)
     delay(round(desiliters / desilitersPumpedPerSecond));
     digitalWrite(powerPin, LOW);
 }
+
+void ControlWaterPump::ToggleWaterPumpStatus()
+{
+    if (previousWaterPumpState)
+    {
+        previousWaterPumpState = false;
+        digitalWrite(powerPin, LOW);
+    }
+    else
+    {
+        previousWaterPumpState = true;
+        digitalWrite(powerPin, HIGH);
+    }
+}
